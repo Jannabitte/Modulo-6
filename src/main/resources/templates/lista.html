@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pendientes</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <h1>Lista de Pendientes Veterinarios</h1>
+
+    <p class="descripcion">
+        Estos son los pendientes registrados en memoria durante la ejecución de la aplicación.
+    </p>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Fecha límite</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:if="${#lists.isEmpty(pendientes)}">
+            <td colspan="3" class="mensaje-vacio">
+                Aún no hay pendientes registrados.
+            </td>
+        </tr>
+
+        <tr th:each="pendiente : ${pendientes}">
+            <td th:text="${pendiente.nombre}"></td>
+            <td th:text="${pendiente.descripcion}"></td>
+            <td th:text="${pendiente.fechaLimite}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="acciones">
+        <a class="boton boton-secundario" th:href="@{/}">Volver al formulario</a>
+    </div>
+
+</div>
+
+</body>
+</html>

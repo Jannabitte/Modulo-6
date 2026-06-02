@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Pendientes</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <h1>Gestor de Pendientes Veterinarios</h1>
+
+    <p class="descripcion">
+        Registra pendientes importantes para la gestión diaria de una clínica veterinaria.
+    </p>
+
+    <form class="formulario" th:action="@{/guardar}" th:object="${pendiente}" method="post">
+
+        <div class="campo">
+            <label for="nombre">Nombre del pendiente:</label>
+            <input type="text" id="nombre" th:field="*{nombre}" placeholder="Ej: Vacunar paciente canino" required>
+        </div>
+
+        <div class="campo">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" th:field="*{descripcion}" placeholder="Ej: Revisar carnet, confirmar tutor y aplicar vacuna anual." required></textarea>
+        </div>
+
+        <div class="campo">
+            <label for="fechaLimite">Fecha límite:</label>
+            <input type="date" id="fechaLimite" th:field="*{fechaLimite}" required>
+        </div>
+
+        <button type="submit">Guardar pendiente</button>
+
+    </form>
+
+    <div class="acciones">
+        <a class="boton boton-secundario" th:href="@{/lista}">Ver lista de pendientes</a>
+    </div>
+
+</div>
+
+</body>
+</html>
