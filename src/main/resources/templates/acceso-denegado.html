@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>VetSecurityCare | Acceso denegado</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<div class="contenedor">
+    <div class="card">
+        <h1>Acceso denegado</h1>
+
+        <p>
+            No tienes permisos suficientes para ingresar a esta sección.
+        </p>
+
+        <p>
+            Esta restricción protege información interna del sistema veterinario.
+        </p>
+
+        <div class="botones">
+            <a th:href="@{/bienvenida}" class="btn">Volver a bienvenida</a>
+        </div>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-salir">Cerrar sesión</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

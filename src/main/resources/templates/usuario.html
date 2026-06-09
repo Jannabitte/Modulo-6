@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>VetSecurityCare | Área Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<div class="contenedor">
+    <div class="card">
+        <h1>Área de usuario</h1>
+
+        <p>
+            Esta sección puede ser visitada por usuarios con rol USER o ADMIN.
+        </p>
+
+        <p>
+            En un sistema veterinario real, aquí podrían revisarse datos generales,
+            información de pacientes o solicitudes internas permitidas para el personal.
+        </p>
+
+        <div class="info">
+            <p><strong>Usuario conectado:</strong> <span th:text="${usuario}"></span></p>
+            <p><strong>Rol asignado:</strong> <span th:text="${roles}"></span></p>
+        </div>
+
+        <div class="botones">
+            <a th:href="@{/bienvenida}" class="btn">Volver</a>
+        </div>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-salir">Cerrar sesión</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

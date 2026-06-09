@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>VetSecurityCare | Página Pública</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<div class="contenedor">
+    <div class="card">
+        <h1>VetSecurityCare</h1>
+        <h2>Página pública</h2>
+
+        <p>
+            Bienvenido al sistema interno de seguridad para una clínica veterinaria.
+            Esta sección es pública y puede ser vista por cualquier persona.
+        </p>
+
+        <p>
+            El objetivo del proyecto es demostrar autenticación, roles y control de acceso
+            utilizando Spring Security.
+        </p>
+
+        <div class="botones">
+            <a th:href="@{/login}" class="btn">Iniciar sesión</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
