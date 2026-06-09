@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-image:
+            linear-gradient(
+                    rgba(255, 255, 255, 0.35),
+                    rgba(255, 255, 255, 0.35)
+            ),
+            url("../img/fondo-onevet.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #21413a;
+}
+
+.contenedor {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.tarjeta {
+    max-width: 520px;
+    padding: 35px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(4px);
+}
+
+.etiqueta {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background-color: rgba(129, 196, 177, 0.35);
+    color: #2d6a5f;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+h1 {
+    margin-bottom: 16px;
+    font-size: 42px;
+    color: #24463f;
+}
+
+p {
+    margin-bottom: 14px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.botones {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.boton {
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: bold;
+    background-color: #5f9f8f;
+    color: white;
+}
+
+.boton.secundario {
+    background-color: #b99ad6;
+}
+
+.boton:hover {
+    opacity: 0.88;
+}
+
+.codigo {
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: rgba(33, 65, 58, 0.09);
+    font-family: Consolas, monospace;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .contenedor {
+        align-items: flex-end;
+        padding: 24px;
+    }
+
+    .tarjeta {
+        max-width: 100%;
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+    .tarjeta-productos {
+        max-width: 850px;
+    }
+
+    .lista-productos {
+        margin-top: 22px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 18px;
+    }
+
+    .producto-card {
+        padding: 18px;
+        border-radius: 18px;
+        background-color: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(95, 159, 143, 0.25);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .producto-card h2 {
+        margin-bottom: 10px;
+        color: #2d6a5f;
+        font-size: 22px;
+    }
+
+    .producto-card p {
+        margin-bottom: 8px;
+        font-size: 15px;
+    }
+}

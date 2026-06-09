@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos OneVet</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main class="contenedor">
+    <section class="tarjeta tarjeta-productos">
+        <span class="etiqueta">Catálogo desde API REST</span>
+
+        <h1>Productos OneVet</h1>
+
+        <p>
+            Esta vista consume el endpoint <strong>GET /productos</strong> y muestra
+            los productos registrados en la API de forma más ordenada.
+        </p>
+
+        <div id="lista-productos" class="lista-productos">
+            <p>Cargando productos...</p>
+        </div>
+
+        <div class="botones">
+            <a class="boton" href="/">Volver al inicio</a>
+            <a class="boton secundario" href="/productos">Ver JSON original</a>
+        </div>
+    </section>
+</main>
+
+<script>
+    fetch('/productos')
+        .then(response => response.json())
+        .then(productos => {
+            const contenedor = document.getElementById('lista-productos');
+
+            if (productos.length === 0) {
+                contenedor.innerHTML = '<p>No hay productos registrados.</p>';
+                return;
+            }
+
+            contenedor.innerHTML = productos.map(producto => `
+                <article class="producto-card">
+                    <h2>${producto.nombre}</h2>
+                    <p>${producto.descripcion}</p>
+                    <p><strong>Precio:</strong> $${producto.precio.toLocaleString('es-CL')}</p>
+                    <p><strong>Stock:</strong> ${producto.stock} unidades</p>
+                </article>
+            `).join('');
+        })
+        .catch(error => {
+            document.getElementById('lista-productos').innerHTML =
+                '<p>No se pudieron cargar los productos.</p>';
+            console.error(error);
+        });
+</script>
+
+</body>
+</html>
