@@ -1,0 +1,19 @@
+# Maven
+target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Logs
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# H2 Database archivos locales
+*.db
+*.mv.db
+*.trace.db

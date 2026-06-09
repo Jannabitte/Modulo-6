@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos Veterinarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(rgba(243, 248, 245, 0.86), rgba(243, 248, 245, 0.86)), url('/img/fondo-onevet.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #263238;
+        }
+
+        header {
+            background: rgba(46, 125, 50, 0.88);
+            color: white;
+            padding: 35px 25px;
+            text-align: center;
+            backdrop-filter: blur(2px);
+        }
+
+        main {
+            width: 90%;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.12);
+        }
+
+        h1, h2 {
+            margin-top: 0;
+        }
+
+        .descripcion {
+            text-align: center;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 14px;
+            margin: 5px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-nuevo {
+            background: #6a1b9a;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .btn-editar {
+            background: #0277bd;
+            color: white;
+        }
+
+        .btn-eliminar {
+            background: #c62828;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background: #e0f2e9;
+            color: #1b5e20;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        tr:hover {
+            background: #f9f9f9;
+        }
+
+        .precio {
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        .mensaje-vacio {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>ProductManager Veterinario</h1>
+    <p class="descripcion">Gestión de productos orientados al cuidado y bienestar animal</p>
+</header>
+
+<main>
+    <h2>Listado de productos</h2>
+
+    <a th:href="@{/productos/nuevo}" class="btn btn-nuevo">Agregar nuevo producto</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:if="${#lists.isEmpty(productos)}">
+            <td colspan="5" class="mensaje-vacio">
+                Aún no hay productos registrados.
+            </td>
+        </tr>
+
+        <tr th:each="producto : ${productos}">
+            <td th:text="${producto.id}"></td>
+            <td th:text="${producto.nombre}"></td>
+            <td th:text="${producto.descripcion}"></td>
+            <td class="precio" th:text="${'$' + #numbers.formatDecimal(producto.precio, 0, 'POINT', 0, 'COMMA')}"></td>            <td>
+                <a th:href="@{/productos/editar/{id}(id=${producto.id})}" class="btn btn-editar">Editar</a>
+                <a th:href="@{/productos/eliminar/{id}(id=${producto.id})}" class="btn btn-eliminar"
+                   onclick="return confirm('¿Seguro que deseas eliminar este producto?');">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Producto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(rgba(243, 248, 245, 0.86), rgba(243, 248, 245, 0.86)), url('/img/fondo-onevet.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #263238;
+        }
+
+        header {
+            background: rgba(46, 125, 50, 0.88);
+            color: white;
+            padding: 35px 25px;
+            text-align: center;
+            backdrop-filter: blur(2px);
+        }
+
+        main {
+            width: 90%;
+            max-width: 650px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.08);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #1b5e20;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .botones {
+            margin-top: 25px;
+        }
+
+        .btn {
+            padding: 10px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-guardar {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .btn-volver {
+            background: #6a1b9a;
+            color: white;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Registro de Producto Veterinario</h1>
+    <p>Formulario para agregar o actualizar productos</p>
+</header>
+
+<main>
+    <form th:action="@{/productos/guardar}" th:object="${producto}" method="post">
+
+        <input type="hidden" th:field="*{id}">
+
+        <label for="nombre">Nombre del producto</label>
+        <input type="text" id="nombre" th:field="*{nombre}" required
+               placeholder="Ej: Shampoo dermatológico">
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" th:field="*{descripcion}" required
+                  placeholder="Ej: Producto de apoyo para pacientes con piel sensible"></textarea>
+
+        <label for="precio">Precio</label>
+        <input type="number" id="precio" th:field="*{precio}" required min="0" step="0.01"
+               placeholder="Ej: 12990">
+
+        <div class="botones">
+            <button type="submit" class="btn btn-guardar">Guardar producto</button>
+            <a th:href="@{/productos}" class="btn btn-volver">Volver al listado</a>
+        </div>
+    </form>
+</main>
+
+</body>
+</html>
