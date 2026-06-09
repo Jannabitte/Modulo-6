@@ -1,0 +1,46 @@
+### Listar todos los productos
+GET http://localhost:8080/productos
+
+
+### Crear producto 1
+POST http://localhost:8080/productos
+Content-Type: application/json
+
+{
+  "nombre": "Shampoo dermatológico",
+  "descripcion": "Producto veterinario para cuidado de piel sensible",
+  "precio": 8990,
+  "stock": 15
+}
+
+
+### Crear producto 2
+POST http://localhost:8080/productos
+Content-Type: application/json
+
+{
+  "nombre": "Alimento clínico renal",
+  "descripcion": "Alimento veterinario formulado para apoyo nutricional renal",
+  "precio": 28990,
+  "stock": 8
+}
+
+
+### Obtener producto por ID
+GET http://localhost:8080/productos/1
+
+
+### Actualizar producto por ID
+PUT http://localhost:8080/productos/1
+Content-Type: application/json
+
+{
+  "nombre": "Shampoo dermatológico premium",
+  "descripcion": "Producto veterinario para piel sensible y cuidado dermatológico",
+  "precio": 9990,
+  "stock": 20
+}
+
+
+### Eliminar producto por ID
+DELETE http://localhost:8080/productos/2
