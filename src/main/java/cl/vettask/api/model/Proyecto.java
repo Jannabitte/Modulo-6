@@ -1,5 +1,6 @@
 package cl.vettask.api.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -29,5 +30,6 @@ public class Proyecto {
     private String areaVeterinaria;
 
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Tarea> tareas = new ArrayList<>();
 }
